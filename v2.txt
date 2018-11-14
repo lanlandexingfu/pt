@@ -1,0 +1,28 @@
+
+
+class Solution {
+    public int[] twoSum(int[] nums, int target) {
+       HashMap<Integer,Integer> map = new HashMap<Integer,Integer>();
+        
+        for(int i=0;i<nums.length;i++){
+            map.put(nums[i],i);
+        }
+        
+        int[] result = new int[2];
+        int i=0;
+        while(i<nums.length){
+            if(map.containsKey(target-nums[i])&&map.get(target-nums[i])!=i){
+                result[0] = i;
+                result[1] = map.get(target-nums[i]);
+            }
+            i++;
+        }
+        return result;
+    }
+}
+
+/*
+ 思路：为了将时间复杂度降低到O(n),也就是只遍历一个数字，另一个数字通过map直接获取到。
+       将数组中的数字作为key放入map中，index作为value.
+	   遍历数组时通过containsKey()判断另一个数字是否存在
+*/
